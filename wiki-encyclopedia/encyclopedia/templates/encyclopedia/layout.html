@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wiki - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'index' %}"><h1>Wiki</h1></a>
+            <div class="search">
+                <form action="{% url 'search' %}" method="get">
+                    <input type="text" name="q" placeholder="Search Wiki">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'new_page' %}">Create New Page</a></li>
+            <li><a href="{% url 'random_page' %}">Random Page</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        {% block body %}{% endblock %}
+    </div>
+</body>
+</html>
